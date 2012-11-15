@@ -1,7 +1,7 @@
 require 'capistrano/ext/multistage'
 require 'bundler/capistrano'
 
-set :application, "appointments"
+set :application, "samlLjackson"
 set :repository, "git://github.com/dubsdaazn/samlLjackson.git"
 set :scm, :git
 set :git_enable_submodules, 1
