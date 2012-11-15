@@ -58,7 +58,7 @@ after 'multistage:ensure', :set_branch
 
 task(:migrate) do
   env = (stage == :acceptance) ? 'ci' : stage
-  run "cd /var/www/webapp/current && bundle exec rake db:migrate RAILS_ENV=#{env}"
+  run "cd #{current_release} && bundle exec rake db:migrate RAILS_ENV=#{env}"
 end
 after 'deploy:update_code', :migrate
 
