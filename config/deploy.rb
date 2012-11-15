@@ -78,9 +78,9 @@ namespace :deploy do
   end
 
   task :start, :roles => :app do
-    run "sudo chown -R deploy:nginx #{current_release}"
+    run "chown -R deploy:nginx #{current_release}"
     if stage == :acceptance
-      run "sudo /etc/init.d/unicorn start"
+      run "/etc/init.d/unicorn start"
     else
       run "touch #{current_release}/tmp/restart.txt"
     end
@@ -89,7 +89,7 @@ namespace :deploy do
   task :stop, :roles => :app do
     # Do nothing.
     if stage == :acceptance
-      run "sudo /etc/init.d/unicorn stop"
+      run "/etc/init.d/unicorn stop"
     end
   end
 
@@ -97,8 +97,8 @@ namespace :deploy do
   task :restart, :roles => :app do
     # run "sudo chown -R deploy:nginx #{current_release}"
     if stage == :acceptance
-      run "sudo /etc/init.d/unicorn stop"
-      run "sudo /etc/init.d/unicorn start"
+      run "/etc/init.d/unicorn stop"
+      run "/etc/init.d/unicorn start"
     else
       run "touch #{current_release}/tmp/restart.txt"
     end
