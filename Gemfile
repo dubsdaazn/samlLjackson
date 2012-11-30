@@ -6,6 +6,10 @@ gem 'ruby-saml', '0.5.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'sqlite3'
 
+group :development do
+  gem 'debugger'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -16,6 +20,10 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :acceptance do
+  gem 'thin', '~> 1.5.0'
 end
 
 gem 'jquery-rails'

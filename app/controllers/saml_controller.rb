@@ -9,7 +9,7 @@ class SamlController < ApplicationController
       response.settings = saml_settings
 
       if response.is_valid?
-        render :text => "Authenticated"
+        render :text => "Authenticated as #{response.name_id}"
       else
         render :text => "Failure"
         
@@ -21,11 +21,11 @@ class SamlController < ApplicationController
     def saml_settings
       settings = Onelogin::Saml::Settings.new
 
-      settings.assertion_consumer_service_url = "http://127.0.0.1:3020/saml/consume"
-      settings.issuer                         = "http://127.0.0.1:3020"
-      settings.idp_sso_target_url             = "http://127.0.0.1:3000/saml/auth"#{}"https://app.onelogin.com/saml/signon/#{OneLoginAppId}"
-      settings.idp_cert_fingerprint           =  ""
-      settings.name_identifier_format         = "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
+      settings.assertion_consumer_service_url = "http://24.112.77.250/saml/consume"
+      settings.issuer                         = "http://24.112.77.250"
+      settings.idp_sso_target_url             = "https://jaredbranum.okta.com/home/template_saml_2_0/0oa1ny13dcLZNMYMERHB/3079"#{}"https://app.onelogin.com/saml/signon/#{OneLoginAppId}"
+      settings.idp_cert_fingerprint           = "CD:C7:C0:8A:DD:0E:0E:94:B1:33:0A:CA:EC:08:29:CC:44:85:A8:23"
+      settings.name_identifier_format         = "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"
       # Optional for most SAML IdPs
       settings.authn_context = "urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport"
 

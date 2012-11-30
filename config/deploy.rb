@@ -8,7 +8,7 @@ set :git_enable_submodules, 1
 set :user, "deploy"
 set :copy_cache, "#{ENV['HOME']}/deploy/#{application}"
 set :copy_exclude, ['.git']
-set :deploy_to, "/var/www/webapp"
+set :deploy_to, "/var/www/#{application}"
 set :deploy_via, :copy
 set :keep_releases, 2
 set :use_sudo, false
@@ -78,9 +78,10 @@ namespace :deploy do
   end
 
   task :start, :roles => :app do
-    run "chown -R deploy:nginx #{current_release}"
+    # run "chown -R deploy:nginx #{current_release}"
     if stage == :acceptance
-      run "sudo /etc/init.d/unicorn start"
+      run "echo START APP MANUALLY"
+      # run "sudo /etc/init.d/unicorn start"
     else
       run "touch #{current_release}/tmp/restart.txt"
     end
@@ -89,7 +90,8 @@ namespace :deploy do
   task :stop, :roles => :app do
     # Do nothing.
     if stage == :acceptance
-      run "sudo /etc/init.d/unicorn stop"
+      run "echo STOP APP MANUALLY"
+      # run "sudo /etc/init.d/unicorn stop"
     end
   end
 
@@ -97,8 +99,9 @@ namespace :deploy do
   task :restart, :roles => :app do
     # run "sudo chown -R deploy:nginx #{current_release}"
     if stage == :acceptance
-      run "sudo /etc/init.d/unicorn stop"
-      run "sudo /etc/init.d/unicorn start"
+      run "echo RESTART APP MANUALLY"
+      # run "sudo /etc/init.d/unicorn stop"
+      # run "sudo /etc/init.d/unicorn start"
     else
       run "touch #{current_release}/tmp/restart.txt"
     end
