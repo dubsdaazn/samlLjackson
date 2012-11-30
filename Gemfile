@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'bigdecimal'
 gem 'rails', '3.2.8'
 gem 'ruby-saml', '0.5.3'
 # Bundle edge Rails instead:
