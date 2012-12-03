@@ -1,7 +1,6 @@
 class SamlController < ApplicationController
     def init
       request = Onelogin::Saml::Authrequest.new
-      raise saml_settings.issuer.inspect
       redirect_to(request.create(saml_settings))
     end
 
