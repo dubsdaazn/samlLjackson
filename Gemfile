@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 gem 'bigdecimal'
 gem 'rails', '3.2.8'
-gem 'ruby-saml', '0.5.3'
+
+gem 'okta_saml'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 gem 'sqlite3'

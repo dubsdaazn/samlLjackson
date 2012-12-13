@@ -1,8 +1,10 @@
 SamlLjackson::Application.routes.draw do
+  get '/foo/bar' => 'foo#bar'
+  # get '/hello' => 'saml#init'
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  get '/saml/init' => 'saml#init'
-  match '/saml/consume' => 'saml#consume'
+  # get '/saml/init' => 'saml#init'
+  # match '/saml/consume' => 'saml#consume'
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
